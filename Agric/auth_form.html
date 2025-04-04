@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .container h2 {
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+    .toggle {
+      margin-top: 15px;
+      color: #555;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="form-title">Login</h2>
+    <form id="auth-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <p class="toggle" onclick="toggleForm()">Don't have an account? Register</p>
+  </div>
+
+  <script>
+    const formTitle = document.getElementById("form-title");
+    const authForm = document.getElementById("auth-form");
+    const toggleText = document.querySelector(".toggle");
+
+    function toggleForm() {
+      if (formTitle.textContent === "Login") {
+        formTitle.textContent = "Register";
+        toggleText.textContent = "Already have an account? Login";
+      } else {
+        formTitle.textContent = "Login";
+        toggleText.textContent = "Don't have an account? Register";
+      }
+    }
+
+    authForm.addEventListener("submit", function(e) {
+  e.preventDefault(); // Prevent the default form submission behavior
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (formTitle.textContent === "Login") {
+    alert(`Logging in as ${username}`);
+    window.location.href = "your-website-url.html"; // Replace with your website URL or file name
+  } else {
+    alert(`Registering user: ${username}`);
+    window.location.href = "your-website-url.html"; // Replace with your website URL or file name
+  }
+});
+  </script>
+</body>
+</html>
